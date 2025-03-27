@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - RedBus Clone</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <style>
+        /* Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ff7e5f, #feb47b);
+            margin: 0;
+            padding: 0;
+            color: white;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* FAQ Container */
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        h1 {
+            color: #ffeb3b;
+            font-size: 36px;
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        /* FAQ Items */
+        .faq-item {
+            text-align: left;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 1s ease-in-out forwards;
+        }
+
+        /* Alternating Colors for Sections */
+        .faq-item:nth-child(odd) { background: rgba(255, 255, 255, 0.2); }
+        .faq-item:nth-child(even) { background: rgba(255, 255, 255, 0.4); }
+
+        /* FAQ Toggle */
+        .faq-answer {
+            display: none;
+            padding-top: 10px;
+            color: #ddd;
+        }
+
+        .faq-item.active {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Delayed Animations */
+        .faq-item:nth-child(1) { animation-delay: 0.5s; }
+        .faq-item:nth-child(2) { animation-delay: 1s; }
+        .faq-item:nth-child(3) { animation-delay: 1.5s; }
+        .faq-item:nth-child(4) { animation-delay: 2s; }
+        .faq-item:nth-child(5) { animation-delay: 2.5s; }
+        .faq-item:nth-child(6) { animation-delay: 3s; }
+        .faq-item:nth-child(7) { animation-delay: 3.5s; }
+
+    </style>
+    <script>
+        // FAQ Toggle Function
+        document.addEventListener("DOMContentLoaded", function () {
+            let faqItems = document.querySelectorAll(".faq-item");
+            faqItems.forEach(item => {
+                item.addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    let answer = this.querySelector(".faq-answer");
+                    answer.style.display = answer.style.display === "block" ? "none" : "block";
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faq.html" class="active">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- FAQ Section -->
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <h3>📌 How do I book a ticket?</h3>
+            <p class="faq-answer">Select your route, date, and bus from our website or app, then proceed with secure payment.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>📌 Can I cancel or reschedule my booking?</h3>
+            <p class="faq-answer">Yes! Use the "My Bookings" section to cancel or reschedule your trip. Cancellation charges may apply.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>📌 What payment options are available?</h3>
+            <p class="faq-answer">We accept credit/debit cards, UPI, net banking, and wallets for secure payments.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>📌 Do you provide refunds?</h3>
+            <p class="faq-answer">Refunds are processed as per our cancellation policy and may take 5-7 business days.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>📌 How can I track my bus?</h3>
+            <p class="faq-answer">Real-time bus tracking is available on our website and mobile app.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>📌 Are there discounts for frequent travelers?</h3>
+            <p class="faq-answer">Yes! Join our loyalty program for exclusive discounts and cashback offers.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>📌 Is there customer support available?</h3>
+            <p class="faq-answer">Our 24/7 customer support team is available via call, email, and live chat.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 RedBus Clone. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

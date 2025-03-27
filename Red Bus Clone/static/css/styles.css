@@ -1,0 +1,170 @@
+/*index.html*/        
+        /* Background & Body */
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background: #f4f4f4; /* Dark background color */
+color: white;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar ul li a:hover {
+            color: #ffbd69;
+        }
+
+        /* Container */
+        .container {
+            margin-top: 100px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 40px;
+            color: #6c0303;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 25px;
+            background: #d32f2f;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #b71c1c;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Image */
+        .bus-image {
+            width: 60%;
+            max-width: 500px;
+            margin-top: 20px;
+            animation: zoomIn 2s ease-in-out;
+        }
+
+        /* Features Section (Stacked Layout) */
+        .features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            gap: 30px;
+        }
+
+        .feature-box {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .feature-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .feature-box h3 {
+            font-size: 22px;
+            color: #d32f2f;
+            margin: 15px 0;
+        }
+
+        .feature-box p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Delayed Animations */
+        .feature-box:nth-child(1) { animation-delay: 0.5s; }
+        .feature-box:nth-child(2) { animation-delay: 1s; }
+        .feature-box:nth-child(3) { animation-delay: 1.5s; }
+        .feature-box:nth-child(4) { animation-delay: 2s; }
+
+        body.dark-mode {
+            background-color: black;
+            color: white;
+        }
+        button {
+            background: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkred;
+        }
+        
+        

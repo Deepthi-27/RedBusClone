@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedBus Clone - Home</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <script src="static/js/script.js" defer></script>
+    <style>
+        /* Background & Body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4; /* Dark background color */
+            color: white;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        .navbar ul li a:hover {
+            color: #ffbd69;
+        }
+
+        /* Container */
+        .container {
+            margin-top: 100px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 40px;
+            color: red;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+            color: black;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: #d32f2f;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .btn:hover {
+            background: #b71c1c;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            gap: 30px;
+        }
+
+        .feature-box {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .feature-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .feature-box h3 {
+            font-size: 22px;
+            color: #d32f2f;
+            margin: 15px 0;
+        }
+
+        .feature-box p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Delayed Animations */
+        .feature-box:nth-child(1) { animation-delay: 0.5s; }
+        .feature-box:nth-child(2) { animation-delay: 1s; }
+        .feature-box:nth-child(3) { animation-delay: 1.5s; }
+        .feature-box:nth-child(4) { animation-delay: 2s; }
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Page Content -->
+    <div class="container">
+        <h1>Welcome to RedBus Clone</h1>
+        <p>Book your bus tickets easily and conveniently.</p>
+        <div class="button-group">
+            <a href="book.html"><button class="btn">Bus Hiring</button></a>
+            <a href="cab_booking.html"><button class="btn">Cab Rental</button></a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <div class="feature-box">
+            <img src="https://media.istockphoto.com/id/1321375119/vector/flat-black-laptop-icon-with-arrow-pointer-or-cursor-mouse-clicking-on-book-online-button.jpg?s=612x612&w=0&k=20&c=Lt2I-DwPGYDQHd6moUDqcwPb1flix3jlOFH0IvdPGRw=" alt="Easy Booking" style="width: 300px; height: 200px;">
+            <h3>Easy Online Booking</h3>
+            <p>Book your tickets with just a few clicks. Fast and hassle-free!</p>
+        </div>
+
+        <div class="feature-box">
+            <img src="https://novelsat.com/wp-content/uploads/2024/11/Guident-PR-Nov-2024-470x470-1.png" alt="Live Tracking" style="width: 300px; height: 200px;">
+            <h3>Live Bus Tracking</h3>
+            <p>Know where your bus is at all times with real-time tracking.</p>
+        </div>
+
+        <div class="feature-box">
+            <img src="https://thumbs.dreamstime.com/b/bus-road-traveling-girl-kid-rides-large-comfortable-sightseeing-excursion-watching-movie-cartoon-screen-chair-entertainment-275900726.jpg" alt="Comfortable Seating" style="width: 300px; height: 200px;">
+            <h3>Comfortable Seating</h3>
+            <p>Enjoy your journey with premium seats and great legroom.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2025 MyWebsite. All Rights Reserved.
+    </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Rental</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <script src="static/js/script.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: darkred;
+        }
+        #rentalPrice {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #d32f2f;
+        }
+
+        /* Bus Animation */
+        .bus {
+            width: 120px;
+            position: absolute;
+            left: -100px;
+            top: 70%;
+            display: none;
+        }
+        .move-bus {
+            animation: moveBus 3s linear forwards;
+        }
+        @keyframes moveBus {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bus Rental Service</h2>
+        <form id="rentalForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+
+            <label for="from">From:</label>
+            <select id="from">
+                <option value="">Select To Place</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Pune">Pune</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Goa">Goa</option>
+                <option value="Jaipur">Jaipur</option>
+            </select>
+
+            <label for="to">To:</label>
+            <select id="to">
+                <option value="">Select To Place</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Pune">Pune</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Goa">Goa</option>
+                <option value="Jaipur">Jaipur</option>
+            </select>
+
+            <label for="date">Travel Date:</label>
+            <input type="date" id="date" required>
+
+            <label for="busSize">Select Bus Size:</label>
+            <select id="busSize" onchange="updatePassengerLimit()">
+                <option value="">Select Bus Size</option>
+                <option value="small" data-max="15">Small (15 seats)</option>
+                <option value="medium" data-max="30">Medium (30 seats)</option>
+                <option value="large" data-max="50">Large (50 seats)</option>
+            </select>
+
+            <label for="passengers">Total Passengers:</label>
+            <input type="number" id="passengers" min="1" max="15" value="1" required>
+
+            <label for="amenities">Select Amenities:</label>
+            <select id="amenities">
+                <option value="">Select the Bus Amenities</option>
+                <option value="basic">Basic</option>
+                <option value="premium">Premium</option>
+                <option value="luxury">Luxury</option>
+            </select>
+
+            <button type="button" onclick="calculateRental()">Get Estimate</button>
+        </form>
+        <p id="rentalPrice"></p>
+    </div>
+
+
+    <script>
+        function updatePassengerLimit() {
+            let busSize = document.getElementById("busSize");
+            let maxPassengers = busSize.options[busSize.selectedIndex].getAttribute("data-max");
+            let passengerInput = document.getElementById("passengers");
+
+            passengerInput.max = maxPassengers;
+            passengerInput.value = 1; // Reset to minimum when changing bus size
+        }
+
+        function calculateRental() {
+            let name = document.getElementById("name").value;
+            let phone = document.getElementById("phone").value;
+            let from = document.getElementById("from").value;
+            let to = document.getElementById("to").value;
+            let date = document.getElementById("date").value;
+            let passengers = parseInt(document.getElementById("passengers").value);
+            let size = document.getElementById("busSize").value;
+            let amenities = document.getElementById("amenities").value;
+
+            if (!name || !phone || !date) {
+                alert("Please fill in all details.");
+                return;
+            }
+
+            let basePrice = size === "small" ? 5000 : size === "medium" ? 8000 : 12000;
+            let finalPrice = amenities === "premium" ? basePrice + 2000 : amenities === "luxury" ? basePrice + 5000 : basePrice;
+            finalPrice *= passengers;
+
+            document.getElementById("rentalPrice").innerHTML = 
+                `Name: ${name} <br> Phone: ${phone} <br> Route: ${from} ➝ ${to} <br> Date: ${date} <br> Passengers: ${passengers} <br> Estimated Cost: ₹${finalPrice}`;
+
+            animateBus();
+        }
+
+    </script>
+</body>
+</html>

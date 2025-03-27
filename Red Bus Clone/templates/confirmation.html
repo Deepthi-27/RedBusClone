@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    
+    <script>
+        function showToast() {
+            let message = localStorage.getItem("bookingStatus") || "Booking Confirmed!";
+            let toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+                localStorage.removeItem("bookingStatus"); // Clear the message
+                closePage(); // Auto-close the page
+            }, 3000); // Show for 3 seconds
+        }
+
+        function closePage() {
+            setTimeout(() => {
+                window.location.href = "index.html"; // Redirect to home page (or any other page)
+            }, 2000); // Redirect after 2s
+        }
+
+        window.onload = function() {
+            showToast();
+        };
+    </script>
+
+    <style>
+        /* Center content */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #414040;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* Confirmation container */
+        .container {
+            background: rgb(255, 248, 248);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            color: rgb(255, 6, 6);
+        }
+
+        /* Toast Notification */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .toast.show {
+            visibility: visible;
+            animation: fadeInOut 3s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            20%, 80% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Confirmed!</h1>
+        <p>Your bus is on the way. Have a safe journey!</p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+</body>
+</html>

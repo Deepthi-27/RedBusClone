@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedBus Clone - Booking</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script>
+        const prices = {
+            "Delhi-Mumbai": 1500, "Delhi-Bangalore": 2000, "Delhi-Chennai": 2200, "Delhi-Kolkata": 1800,
+            "Delhi-Hyderabad": 1900, "Mumbai-Bangalore": 1600, "Mumbai-Chennai": 1700, "Mumbai-Kolkata": 1400,
+            "Mumbai-Hyderabad": 1500, "Bangalore-Chennai": 900, "Bangalore-Kolkata": 2000, "Bangalore-Hyderabad": 1000,
+            "Chennai-Kolkata": 1800, "Chennai-Hyderabad": 1100, "Kolkata-Hyderabad": 1700
+        };
+
+        function updatePrice() {
+            let from = document.getElementById("from").value;
+            let to = document.getElementById("to").value;
+            let seats = parseInt(document.getElementById("seats").value);
+            let route = from + "-" + to;
+            let price = prices[route] || 0;
+            document.getElementById("price").innerText = "Total Price: ₹" + (price * seats);
+        }
+
+        function confirmBooking(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            let button = document.querySelector(".btn");
+            button.innerText = "Processing...";
+            button.style.background = "gray";
+            button.disabled = true;
+
+            localStorage.setItem("bookingStatus", "✅ Booking Successful!"); // Store status
+
+            setTimeout(() => {
+                window.location.href = "confirmation.html";
+            }, 2000);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #413e3e;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            text-align: left;
+        }
+        h1 {
+            text-align: center;
+            color: #d32f2f;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #d32f2f;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #d32f2f;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: #b71c1c;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Your Bus Ticket</h1>
+        <form class="booking-form" onsubmit="confirmBooking(event)">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Mobile/Email ID:</label>
+                <input type="text" id="contact" name="contact" placeholder="Enter your mobile or email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="from">From:</label>
+                <select id="from" name="from" onchange="updatePrice()" required>
+                    <option value="">Select City</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="to">To:</label>
+                <select id="to" name="to" onchange="updatePrice()" required>
+                    <option value="">Select City</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="seats">Seats:</label>
+                <select id="seats" name="seats" onchange="updatePrice()" required>
+                    <option value="">Select Seats</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+
+            <p class="price" id="price">Total Price: ₹0</p>
+
+            <button type="submit" class="btn">Confirm Booking</button>
+        </form>
+    </div>
+</body>
+</html>

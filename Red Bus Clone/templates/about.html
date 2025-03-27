@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - RedBus Clone</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- External CSS -->
+    <style>
+        /* Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url("static/images/about-bg.jpg") no-repeat center center/cover;
+            height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        .navbar ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        /* About Page Sections */
+        .about-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        /* Section Background Colors */
+        .about { background: #ff7043; }  /* Orange */
+        .mission { background: #42a5f5; } /* Blue */
+        .choose-us { background: #66bb6a; } /* Green */
+        .commitment { background: #ab47bc; } /* Purple */
+
+        /* Section Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Delayed Animations for Sections */
+        .about { animation-delay: 0.5s; }
+        .mission { animation-delay: 1.5s; }
+        .choose-us { animation-delay: 2.5s; }
+        .commitment { animation-delay: 3.5s; }
+
+        /* Footer (Copyright) */
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin: 0;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Footer Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="cab_booking.html">Bus Rental</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <button id="darkModeToggle">🌙 Dark Mode</button>
+        </ul>
+    </nav>
+
+    <!-- About Us Content with Animations -->
+    <div class="about-container">
+        <section class="section about">
+            <h1>About Us</h1>
+            <p>Welcome to <strong>RedBus Clone</strong>, your trusted platform for easy and reliable bus ticket booking. We provide a <strong>seamless and hassle-free experience</strong> for travelers looking for the best bus services across various routes.</p>
+        </section>
+
+        <section class="section mission">
+            <h2>Our Mission</h2>
+            <p>Our goal is to revolutionize the bus travel industry by offering a <strong>fast, secure, and convenient</strong> way to book bus tickets. We aim to connect passengers with <strong>top-rated bus operators</strong>, ensuring safety, comfort, and affordability.</p>
+        </section>
+
+        <section class="section choose-us">
+            <h2>Why Choose Us?</h2>
+            <ul>
+                ✅ <strong>Easy Online Booking</strong> - Quick and simple ticket booking process.<br>
+                ✅ <strong>Real-Time Bus Tracking</strong> - Track your bus in real-time for a hassle-free experience.<br>
+                ✅ <strong>Secure Payments</strong> - Multiple payment options with complete security.<br>
+                ✅ <strong>24/7 Customer Support</strong> - Our team is here to assist you anytime.<br>
+            </ul>
+        </section>
+
+        <section class="section commitment">
+            <h2>Our Commitment</h2>
+            <p>At <strong>RedBus Clone</strong>, we prioritize <strong>customer satisfaction</strong> by ensuring a <strong>smooth booking process, competitive pricing, and excellent service</strong>. Whether you're planning a short trip or a long journey, we've got you covered.</p>
+        </section>
+    </div>
+
+    <!-- Footer (Copyright) -->
+    <footer class="footer">
+        <p>&copy; 2025 RedBus Clone. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
